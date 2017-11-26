@@ -25,7 +25,7 @@ SECRET_KEY = '6sfo5y--b12_dwvu@c0n822wyc74x8)w2yco3^1e5lg7^bxq@8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['sunat360.tk',]
+ALLOWED_HOSTS = ['sunat360.tk','127.0.0.1',]
 
 
 # Application definition
@@ -81,12 +81,11 @@ WSGI_APPLICATION = 'proyectoHackaton.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'NAME' : 'sunat',
-        'USER' : 'root',
-        'PASSWORD' : 'D2bre&eSWu7a',
-        'HOST' : 'localhost',
-        'PORT' : '3306',
+        'NAME': 'sunat',
+        'USER': 'antonio',
+        'PASSWORD': 'del789',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 

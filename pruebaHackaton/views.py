@@ -72,10 +72,4 @@ def usuarioValidacion(request):
 #antonio
 def mostrarTotales(request):
     results = TotalesView.mostrar(request.GET.get("id_cliente"))
-    dic_totales={}
-    dic_totales['tfacturacion']=results[0][0]
-    dic_totales['cfacturacion']=results[0][1]
-    dic_totales['tpersona']=results[0][2]
-    dic_totales['cpersona']=results[0][3]
-    r=json.dumps(dic_totales)
-    return HttpResponse(r)
+    return HttpResponse(results)
