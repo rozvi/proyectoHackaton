@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from pruebaHackaton.models import Person,Usuario
+from pruebaHackaton.models import Person,Usuario,TotalesView
 from pruebaHackaton.serializers import PersonSerializer, UsuarioSerializer
 from django.http import HttpResponse
 from rest_framework import generics
@@ -52,9 +52,23 @@ def usuarioValidacion(request):
             
             data=request.data
             usuario = Usuario.objects.filter(ruc=data["ruc"]).filter(username=data["username"]).filter(password=data["password"])
-            serializer = UsuarioSerializer(usuario, many=True)
-            return Response(serializer.data)
-           
+            dic_usuario={}
+            dic={}
+            if len(usuario)==0:
+                dic_usuario['IsLogin']='False'
+                dic_usuario['data']={}
+
+            else:
+                dic_usuario['IsLogin']='True'
+                
+                dic['username']=usuario[0].username
+                #dic_usuario['password']=usuario[0].password
+                dic['ruc']=usuario[0].ruc
+                dic['nombreComercial']=usuario[0].nombreComercial
+                dic_usuario['data']=dic
+            r=json.dumps(dic_usuario)
+            return HttpResponse(r)
+
 #antonio
 def mostrarTotales(request):
     results = TotalesView.mostrar(request.GET.get("id_cliente"))
@@ -64,4 +78,4 @@ def mostrarTotales(request):
     dic_totales['tpersona']=results[0][2]
     dic_totales['cpersona']=results[0][3]
     r=json.dumps(dic_totales)
-    return Response(r)
+    return HttpResponse(r)
