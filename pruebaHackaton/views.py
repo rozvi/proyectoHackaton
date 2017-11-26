@@ -42,21 +42,18 @@ def person_list(request):
 
 @api_view(['GET', 'POST'])
 def usuarioValidacion(request):
-    print("hola que kaces")
+    
     if request.method == 'GET':
         usuario = Usuario.objects.all()
         serializer = UsuarioSerializer(usuario, many=True)      
         return Response(serializer.data)
     else:
         if request.method == 'POST':
+            print("hola que kaces")
             data=request.data
             usuario = Usuario.objects.filter(ruc=data["ruc"]).filter(username=data["username"]).filter(password=data["password"])
-            serializer = UsuarioSerializer(usuario, many=True) 
-            if usuario[0].ruc==data["ruc"]:
-                documento=Documento.objects.filter(idUsuario_id=usuario[0].id)
-                
-            response = {'success': True}
-            return Response(serializer.data)
+            serializer = UsuarioSerializer(usuario, many=True)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
            
 #antonio
 def mostrarTotales(request):
@@ -67,4 +64,4 @@ def mostrarTotales(request):
     dic_totales['tpersona']=results[0][2]
     dic_totales['cpersona']=results[0][3]
     r=json.dumps(dic_totales)
-    return HttpResponse(r)
+    return Response(r)
