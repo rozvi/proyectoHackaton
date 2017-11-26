@@ -13,7 +13,10 @@ urlpatterns = [
     url(r'^objeto/$',views.person_list,name='listaPersona'),
     #url(r'^/persona', ListCreateAPIView.as_view(queryset=Person.objects.all(), serializer_class=PersonSerializer), name='user-list')
     url(r'^prueba/$',views.index,name='index'),
-    url(r'^login/$',views.usuarioValidacion, name='usuario'),
+    url(r'^login/$',views.usuarioValidacion, name='usuario'),}
+
+    #antonio
+    url(r'^mostrarTotales/$',views.mostrarTotales, name='id_cliente'),
     
 ]
 

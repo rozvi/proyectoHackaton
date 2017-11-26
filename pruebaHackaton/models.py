@@ -54,3 +54,16 @@ class Detalle(models.Model):
     precio=models.IntegerField(default=0)
     producto=models.CharField(max_length=200)
     igv=models.IntegerField(default=0)
+
+#antonio
+class TotalesView(models.Model):
+
+    def mostrar(id_usuario):
+        cur=connection.cursor()
+        cur.callproc('prc_totalfacturacion', id_usuario)  
+        # grab the results  
+        results = cur.fetchall()  
+        cur.close()  
+        
+        # wrap the results up into Document domain objects   
+        return results
