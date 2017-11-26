@@ -25,7 +25,7 @@ SECRET_KEY = '6sfo5y--b12_dwvu@c0n822wyc74x8)w2yco3^1e5lg7^bxq@8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['sunat360.tk','localhost']
+ALLOWED_HOSTS = ['sunat360.tk','localhost',]
 
 
 # Application definition
