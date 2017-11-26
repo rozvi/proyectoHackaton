@@ -49,11 +49,11 @@ def usuarioValidacion(request):
         return Response(serializer.data)
     else:
         if request.method == 'POST':
-            print("hola que kaces")
+            
             data=request.data
             usuario = Usuario.objects.filter(ruc=data["ruc"]).filter(username=data["username"]).filter(password=data["password"])
             serializer = UsuarioSerializer(usuario, many=True)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(serializer.data)
            
 #antonio
 def mostrarTotales(request):
